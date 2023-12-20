@@ -66,3 +66,34 @@ where (販売店 = 'A'
 or 販売店 = 'B')
 AND (カテゴリ = 'ゲーム'
 or カテゴリ = 'DVD')
+
+select * from 家計簿
+order by 日付 asc
+
+select * from 家計簿
+order by 出金額
+
+select * from 家計簿
+order by 入金額 desc, 出金額 desc
+
+select * from 家計簿
+order by 4 desc
+
+-- LIMITの利用
+--（Db2、MySQL、PostgreSQL、SQLite、H2 Database）
+SELECT 費目, 出金額
+  FROM 家計簿
+ LIMIT 3
+
+SELECT 費目, 入金額, 出金額 FROM 家計簿
+UNION
+SELECT 費目, 入金額, 出金額 FROM 家計簿アーカイブ
+order by 出金額 desc
+
+SELECT 費目 FROM 家計簿
+EXCEPT
+SELECT 費目 FROM 家計簿アーカイブ
+
+SELECT 費目 FROM 家計簿
+INTERSECT -- MySQLでは非対応
+SELECT 費目 FROM 家計簿アーカイブ
